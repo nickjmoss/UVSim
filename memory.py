@@ -2,6 +2,22 @@ import re
 
 memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
 
+def read():
+    cols = [str(x).zfill(2) for x in range(0,10)]
+    rows = [str(x).zfill(2) for x in range(0,100,10)]
+
+    print("   ", end="")
+    for col in cols:
+        print ("{:>6}".format(col), end="")
+    print()
+
+    for row in rows:
+        print(row, end="  ")
+        for col in cols:
+            position = str(int(row) + int(col)).zfill(2)
+            print(memory_dict[position], end=" ")
+        print()
+
 def load():
     print(
         "*** Please enter your program one instruction ***\n"\

@@ -1,13 +1,12 @@
 # The main file to run UVSimulator
-import load_memory
+import memory
 
 def main():
     print("*** Welcome to UVSim! ***")
-    load_memory.load()
+    memory.load()
     print("*** Program execution begins  ***\n")
 
-    # TODO: This will be updated to the correct format in future work
-    print(load_memory.memory_dict)
+    memory.read()
 
 if __name__ == "__main__":
     main()
