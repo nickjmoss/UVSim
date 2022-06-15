@@ -6,11 +6,7 @@ def main():
     memory.load()
     print("*** Program execution begins  ***\n")
 
-
-    pointer = "00"
-
-    #accumulator is a string used to store one value for use of operands
-    accumulator = "00"
+    mem_dict = memory.memory_dict
 
     #op_count is the number of opperands entered
     op_count = 0
