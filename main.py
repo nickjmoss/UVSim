@@ -1,5 +1,7 @@
 # The main file to run UVSimulator
 import memory
+import registers
+import branch
 
 def main():
     print("*** Welcome to UVSim! ***")
@@ -55,8 +57,8 @@ def main():
                 pass
 
             if op_code == "040":
-                #TODO: import Branch function
-                pass
+                branch.branch(mem_dict[word][3:])
+                continue      
 
             if op_code == "041":
                 #TODO: import BranchNeg function
@@ -69,6 +71,8 @@ def main():
             if op_code == "043":
                 #TODO: import Halt function
                 pass
+
+            # TODO: PC will be updated to next memory location
     memory.read()
 
 if __name__ == "__main__":
