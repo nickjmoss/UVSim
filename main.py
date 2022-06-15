@@ -1,6 +1,7 @@
 # The main file to run UVSimulator
 import memory
-import math_ops
+import registers
+import branch
 
 
 def main():
@@ -9,6 +10,9 @@ def main():
     print("*** Program execution begins  ***\n")
 
     mem_dict = memory.memory_dict
+
+    # op_count is the number of opperands entered
+    op_count = 0
 
     # op_codes is list with all opperand codes with "0" at beggining indecated for positive num
     op_codes = [
@@ -67,8 +71,8 @@ def main():
                 pass
 
             if op_code == "040":
-                # TODO: import Branch function
-                pass
+                branch.branch(mem_dict[word][3:])
+                continue
 
             if op_code == "041":
                 # TODO: import BranchNeg function
@@ -81,6 +85,8 @@ def main():
             if op_code == "043":
                 # TODO: import Halt function
                 pass
+
+            # TODO: PC will be updated to next memory location
     memory.read()
 
 
