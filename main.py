@@ -1,6 +1,5 @@
 # The main file to run UVSimulator
 import memory
-import registers
 import branch
 
 def main():
@@ -9,9 +8,6 @@ def main():
     print("*** Program execution begins  ***\n")
 
     mem_dict = memory.memory_dict
-
-    #op_count is the number of opperands entered
-    op_count = 0
     
     #op_codes is list with all opperand codes with "0" at beggining indecated for positive num
     op_codes = ["010", "011", "020", "021", "030", "031", "032", "033", "040", "041", "042", "043"]
