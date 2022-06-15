@@ -1,6 +1,5 @@
 # The main file to run UVSimulator
 import memory
-import registers
 import branch
 
 def main():
