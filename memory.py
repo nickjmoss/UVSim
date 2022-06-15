@@ -18,7 +18,7 @@ def read():
             print(memory_dict[position], end=" ")
         print()
 
-def load():
+def init():
     print(
         "*** Please enter your program one instruction ***\n"\
         "*** ( or data word) at a time into the input  ***\n"\
