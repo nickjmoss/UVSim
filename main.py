@@ -42,21 +42,30 @@ def main():
 			if op_code == "030":
 				result = math_ops.add(location)
 				if result is False:
-					print("The sum of the values was too big too handle")
+					print("The sum of the values was too big or too small to handle")
 					break
 				continue
 
 			if op_code == "031":
-				# TODO: import Subtract function
-				pass
+				result = math_ops.subtract(location)
+				if result is False:
+					print("The difference of the values was too big or too small to handle")
+					break
+				continue
 
 			if op_code == "032":
-				# TODO: import Mulitiply function
-				pass
+				result = math_ops.multiply(location)
+				if result is False:
+					print("The product of the values was too big or too small to handle")
+					break
+				continue
 
 			if op_code == "033":
-				# TODO: import Devide function
-				pass
+				result = math_ops.divide(location)
+				if result is False:
+					print("The difference of the values was too big or too small to handle, or there was a division by zero")
+					break
+				continue
 
 			if op_code == "040":
 				branch.branch(mem_dict[word][3:])
