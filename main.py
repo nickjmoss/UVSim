@@ -1,6 +1,7 @@
 # The main file to run UVSimulator
 import memory
 import branch
+import store
 import registers
 
 def main():
@@ -44,8 +45,7 @@ def main():
                 pass
 
             if op_code == "021":
-                #TODO: import Store function
-                pass
+                store.store(mem_dict[word][3:])
 
             if op_code == "030":
                 #TODO: import Add function
