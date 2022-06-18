@@ -36,11 +36,11 @@ def main():
 
             if op_code == "010":
                 io_ops.read(location)
-                pass
+                continue
             
             if op_code == "011":
                 io_ops.write(location)
-                pass
+                continue
 
             if op_code == "020":
                 #TODO: import Load function
