@@ -88,7 +88,7 @@ def main():
 
         iter_count += 1
         registers.registers["PC"] = str(iter_count)
-        print(iter_count)
+    
     memory.read()
 
 if __name__ == "__main__":
