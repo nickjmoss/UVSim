@@ -81,8 +81,7 @@ def main():
                     continue
 
             if op_code == "043":
-                #TODO: import Halt function
-                pass
+                break
  
         #Update Iteration count and assign PC
 
