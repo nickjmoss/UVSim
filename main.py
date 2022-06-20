@@ -3,6 +3,7 @@ import memory
 import branch
 import store
 import registers
+import io_ops
 
 def main():
     print("*** Welcome to UVSim! ***")
@@ -18,27 +19,28 @@ def main():
     iter_count = 0
 
     while iter_count != 100:
-        
+
         #If iteration less than ten, convert to string, and add zero at beginning
         if iter_count < 10:
             word = "0"+str(iter_count)
         #Else: just convert to string
         else:
             word = str(iter_count)
-        
+
         op_code = mem_dict[word][:3]
+        location = mem_dict[word][-2:]
 
         if op_code in op_codes:
 
             #fuctions will be called in order corrisponding to their identifiers
 
             if op_code == "010":
-                #TODO: import Read function here
-                pass
+                io_ops.read(location)
+                continue
             
             if op_code == "011":
-                #TODO: import Write function here
-                pass
+                io_ops.write(location)
+                continue
 
             if op_code == "020":
                 #TODO: import Load function
@@ -82,12 +84,12 @@ def main():
 
             if op_code == "043":
                 break
- 
+
         #Update Iteration count and assign PC
 
         iter_count += 1
         registers.registers["PC"] = str(iter_count)
-    
+
     memory.read()
 
 if __name__ == "__main__":
