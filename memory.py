@@ -18,7 +18,7 @@ def read():
             print(memory_dict[position], end=" ")
         print()
 
-def load():
+def init():
     print(
         "*** Please enter your program one instruction ***\n"\
         "*** ( or data word) at a time into the input  ***\n"\
@@ -49,3 +49,4 @@ def load():
         # Parse user input for memory ( + => 0 and - => 1 )
         user_input = user_input.replace("+", "0").replace("-", "1")
         memory_dict[location] = user_input
+		
