@@ -1,7 +1,6 @@
 # The main file to run UVSimulator
 import memory
 import math_ops
-import registers
 import branch
 import load
 
