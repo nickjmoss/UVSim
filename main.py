@@ -3,7 +3,9 @@ import memory
 import math_ops
 import branch
 import load
-
+import store
+import registers
+import io_ops
 
 def main():
 	print("*** Welcome to UVSim! ***")
@@ -14,8 +16,19 @@ def main():
 
 	# op_codes is list with all opperand codes with "0" at beggining indecated for positive num
 	op_codes = ["010","011","020","021","030","031","032","033","040","041","042","043"]
+	
+	#iteration count is used for branching
+	iter_count = 0
 
-	for word in mem_dict.keys():
+	while iter_count != 100:
+
+		#If iteration less than ten, convert to string, and add zero at beginning
+		if iter_count < 10:
+			word = "0"+str(iter_count)
+		#Else: just convert to string
+		else:
+			word = str(iter_count)
+
 		op_code = mem_dict[word][:3]
 		location = mem_dict[word][-2:]
 
@@ -23,20 +36,19 @@ def main():
 			# fuctions will be called in order corrisponding to their identifiers
 
 			if op_code == "010":
-				# TODO: import Read function here
-				pass
-
+				io_ops.read(location)
+				continue
+			
 			if op_code == "011":
-				# TODO: import Write function here
-				pass
+				io_ops.write(location)
+				continue
 
 			if op_code == "020":
 				load.load(location)
 				continue
 
 			if op_code == "021":
-				# TODO: import Store function
-				pass
+				store.store(mem_dict[word][3:])
 
 			if op_code == "030":
 				result = math_ops.add(location)
@@ -68,23 +80,30 @@ def main():
 
 			if op_code == "040":
 				branch.branch(mem_dict[word][3:])
-				continue
+				iter_count = int(mem_dict[word][3:])
+				continue      
 
 			if op_code == "041":
-				# TODO: import BranchNeg function
-				pass
+				if int(registers.registers["ACC"]) < 0:
+					branch.branch(mem_dict[word][3:])
+					iter_count = int(mem_dict[word][3:])
+					continue
 
 			if op_code == "042":
-				# TODO: import BranchZero function
-				pass
+				if int(registers.registers["ACC"]) == 0:
+					branch.branch(mem_dict[word][3:])
+					iter_count = int(mem_dict[word][3:])
+					continue
 
 			if op_code == "043":
-				# TODO: import Halt function
-				pass
+				break
 
-			# TODO: PC will be updated to next memory location
+		#Update Iteration count and assign PC
+
+		iter_count += 1
+		registers.registers["PC"] = str(iter_count)
+
 	memory.read()
-
 
 if __name__ == "__main__":
 	main()
