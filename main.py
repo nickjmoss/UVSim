@@ -37,15 +37,12 @@ def main():
 
 			if op_code == "010":
 				io_ops.read(location)
-				continue
 			
 			if op_code == "011":
 				io_ops.write(location)
-				continue
 
 			if op_code == "020":
 				load.load(location)
-				continue
 
 			if op_code == "021":
 				store.store(mem_dict[word][3:])
@@ -55,45 +52,40 @@ def main():
 				if result is False:
 					print("The sum of the values was too big or too small to handle")
 					break
-				continue
 
 			if op_code == "031":
 				result = math_ops.subtract(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle")
 					break
-				continue
 
 			if op_code == "032":
 				result = math_ops.multiply(location)
 				if result is False:
 					print("The product of the values was too big or too small to handle")
 					break
-				continue
 
 			if op_code == "033":
 				result = math_ops.divide(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle, or there was a division by zero")
 					break
-				continue
 
 			if op_code == "040":
 				branch.branch(mem_dict[word][3:])
-				iter_count = int(mem_dict[word][3:])
-				continue      
+				iter_count = int(mem_dict[word][3:])      
 
 			if op_code == "041":
 				if int(registers.registers["ACC"]) < 0:
 					branch.branch(mem_dict[word][3:])
 					iter_count = int(mem_dict[word][3:])
-					continue
+
 
 			if op_code == "042":
 				if int(registers.registers["ACC"]) == 0:
 					branch.branch(mem_dict[word][3:])
 					iter_count = int(mem_dict[word][3:])
-					continue
+
 
 			if op_code == "043":
 				break
