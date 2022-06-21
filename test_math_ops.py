@@ -7,8 +7,8 @@ def test_num_format():
     print("test_num_format - pass")
 
 def test_final_result():
-    assert math_ops.finalResult(-5) == "10005"
-    assert math_ops.finalResult(5) == "00005"
+    assert math_ops.final_result(-5) == "10005"
+    assert math_ops.final_result(5) == "00005"
     print("test_final_result - pass")
 
 def test_convert():
