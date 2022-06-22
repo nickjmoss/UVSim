@@ -1,3 +1,6 @@
+'''
+Author: Nick Moss
+'''
 import registers
 import memory
 

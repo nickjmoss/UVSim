@@ -1,3 +1,6 @@
+'''
+Author: Nick Moss
+'''
 import memory
 import registers as reg
 

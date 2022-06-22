@@ -44,6 +44,7 @@ def main():
 				io_ops.write(location)
 
 			if op_code == "020":
+				'''Author: Nick Moss'''
 				load.load(location)
 
 			if op_code == "021":
@@ -51,24 +52,28 @@ def main():
 				store.store(mem_dict[word][3:])
 
 			if op_code == "030":
+				'''Author: Nick Moss'''
 				result = math_ops.add(location)
 				if result is False:
 					print("The sum of the values was too big or too small to handle")
 					break
 
 			if op_code == "031":
+				'''Author: Nick Moss'''
 				result = math_ops.subtract(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle")
 					break
 
 			if op_code == "032":
+				'''Author: Nick Moss'''
 				result = math_ops.multiply(location)
 				if result is False:
 					print("The product of the values was too big or too small to handle")
 					break
 
 			if op_code == "033":
+				'''Author: Nick Moss'''
 				result = math_ops.divide(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle, or there was a division by zero")
