@@ -1,3 +1,4 @@
+#Author: Gavin Doel
 import registers
 import memory
 

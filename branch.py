@@ -1,3 +1,4 @@
+#Author: Gavin Doel
 import registers 
 
 #The branch operation will change PC to target memory location

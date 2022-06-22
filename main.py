@@ -47,6 +47,7 @@ def main():
 				load.load(location)
 
 			if op_code == "021":
+                #Author Gavin Doel
 				store.store(mem_dict[word][3:])
 
 			if op_code == "030":
@@ -74,16 +75,19 @@ def main():
 					break
 
 			if op_code == "040":
+                #Author: Gavin Doel
 				branch.branch(mem_dict[word][3:])
 				iter_count = int(mem_dict[word][3:])
 
 			if op_code == "041":
+                #Author: Gavin Doel
 				if int(registers.registers["ACC"]) < 0:
 					branch.branch(mem_dict[word][3:])
 					iter_count = int(mem_dict[word][3:])
 
 
 			if op_code == "042":
+                #Author: Gavin Doel
 				if int(registers.registers["ACC"]) == 0:
 					branch.branch(mem_dict[word][3:])
 					iter_count = int(mem_dict[word][3:])
