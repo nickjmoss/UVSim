@@ -36,9 +36,11 @@ def main():
 			# fuctions will be called in order corrisponding to their identifiers
 
 			if op_code == "010":
+				'''Author: Melissa Dunn'''
 				io_ops.read(location)
-			
+
 			if op_code == "011":
+				'''Author: Melissa Dunn'''
 				io_ops.write(location)
 
 			if op_code == "020":
@@ -73,7 +75,7 @@ def main():
 
 			if op_code == "040":
 				branch.branch(mem_dict[word][3:])
-				iter_count = int(mem_dict[word][3:])      
+				iter_count = int(mem_dict[word][3:])
 
 			if op_code == "041":
 				if int(registers.registers["ACC"]) < 0:
@@ -94,6 +96,7 @@ def main():
 		iter_count += 1
 		registers.registers["PC"] = str(iter_count)
 
+	print("\nMEMORY:")
 	memory.read()
 
 if __name__ == "__main__":

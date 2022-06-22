@@ -1,3 +1,7 @@
+'''
+Author: Melissa DUnn
+'''
+
 import re
 
 memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
