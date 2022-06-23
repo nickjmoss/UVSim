@@ -3,6 +3,7 @@ import registers
 import memory
 
 def test_store():
+    '''Tests that the registers can store data points'''
     registers.registers["ACC"] = "01007"
     store.store("05")
     assert memory.memory_dict["05"] == "01007"
