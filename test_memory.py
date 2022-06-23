@@ -1,6 +1,6 @@
+'''Author: Kyle Meiners'''
 
 import mock
-
 import memory
 
 
