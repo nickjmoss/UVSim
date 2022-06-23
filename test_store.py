@@ -1,3 +1,5 @@
+'''Author: Kyle Meiners'''
+
 import store
 import registers
 import memory
