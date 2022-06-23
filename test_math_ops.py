@@ -1,3 +1,5 @@
+'''Author: Kyle Meiners'''
+
 import math_ops
 import registers
 import memory
