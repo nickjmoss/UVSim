@@ -31,3 +31,9 @@ Example: +1007 would be the READ Opcode which would read a word from the keyboar
 2. Once the prompt appears, begin entering the BasicML program word by word (word = signed 4 digit number).
 3. Enter `-99999` when finished entering the BasicML program.
 4. UVSim will then execute the BasicML program.
+
+
+## How to Test
+- All test files are prepended with 'test'.
+- Install mock: `pip install mock`.
+- Run a test file as follows `python3 test_math_ops.py`.
