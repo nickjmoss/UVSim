@@ -9,6 +9,8 @@ import io_ops
 
 def main():
 	memory = mem.Memory()
+	io = io_ops.IO()
+
 	print("*** Welcome to UVSim! ***")
 	memory.init()
 	print("*** Program execution begins  ***\n")
@@ -38,11 +40,11 @@ def main():
 
 			if op_code == "010":
 				'''Author: Melissa Dunn'''
-				io_ops.read(location, memory)
+				io.read(location, memory)
 
 			if op_code == "011":
 				'''Author: Melissa Dunn'''
-				io_ops.write(location, memory)
+				io.write(location, memory)
 
 			if op_code == "020":
 				'''Author: Nick Moss'''

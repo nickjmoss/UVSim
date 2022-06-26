@@ -4,23 +4,24 @@ Author: Melissa Dunn
 
 import re
 
-def read(location, memory):
-    '''Read a word from the keyboard into a specific location in memor'''
+class IO:
+    def read(self, location, memory):
+        '''Read a word from the keyboard into a specific location in memor'''
 
-    while True:
-        print("Enter an integer: ", end="")
+        while True:
+            print("Enter an integer: ", end="")
 
-        user_input = input()
+            user_input = input()
 
-        if(re.fullmatch("^[+-]?\d{1,4}", user_input) is None):
-            print("Invalid input. Try again.")
-        else:
-            break
-    user_input = user_input.replace("+", "0").replace("-", "1")
-    memory.memory_dict[location] = (user_input).zfill(5)
+            if(re.fullmatch("^[+-]?\d{1,4}", user_input) is None):
+                print("Invalid input. Try again.")
+            else:
+                break
+        user_input = user_input.replace("+", "0").replace("-", "1")
+        memory.memory_dict[location] = (user_input).zfill(5)
 
-def write(location, memory):
-    '''Write a word from a specific location in memory to screen.'''
+    def write(self, location, memory):
+        '''Write a word from a specific location in memory to screen.'''
 
-    output = re.sub(r'^1', "-", memory.memory_dict[location])
-    print(f"Contents of {int(location)} is {int(output)}")
+        output = re.sub(r'^1', "-", memory.memory_dict[location])
+        print(f"Contents of {int(location)} is {int(output)}")
