@@ -3,9 +3,8 @@ Author: Melissa Dunn
 '''
 
 import re
-import memory
 
-def read(location):
+def read(location, memory):
     '''Read a word from the keyboard into a specific location in memor'''
 
     while True:
@@ -20,7 +19,7 @@ def read(location):
     user_input = user_input.replace("+", "0").replace("-", "1")
     memory.memory_dict[location] = (user_input).zfill(5)
 
-def write(location):
+def write(location, memory):
     '''Write a word from a specific location in memory to screen.'''
 
     output = re.sub(r'^1', "-", memory.memory_dict[location])

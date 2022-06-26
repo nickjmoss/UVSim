@@ -1,8 +1,7 @@
 #Author: Gavin Doel
 import registers
-import memory
 
-def store(location):
+def store(location, memory):
     word = registers.registers["ACC"]
     memory.memory_dict[location] = word
     
