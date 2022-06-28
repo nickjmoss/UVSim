@@ -1,11 +1,11 @@
 # The main file to run UVSimulator
 import memory
-import math_ops
+from math_ops import Math_ops
 import branch
 import load
 import store
 import registers
-import io_ops
+from io_ops import Io_ops
 
 def main():
 	print("*** Welcome to UVSim! ***")
@@ -19,6 +19,8 @@ def main():
 
 	#iteration count is used for branching
 	iter_count = 0
+	calc = Math_ops()
+	io = Io_ops()
 
 	while iter_count != 100:
 
@@ -37,11 +39,11 @@ def main():
 
 			if op_code == "010":
 				'''Author: Melissa Dunn'''
-				io_ops.read(location)
+				io.read(location)
 
 			if op_code == "011":
 				'''Author: Melissa Dunn'''
-				io_ops.write(location)
+				io.write(location)
 
 			if op_code == "020":
 				'''Author: Nick Moss'''
@@ -53,28 +55,28 @@ def main():
 
 			if op_code == "030":
 				'''Author: Nick Moss'''
-				result = math_ops.add(location)
+				result = calc.add(location)
 				if result is False:
 					print("The sum of the values was too big or too small to handle")
 					break
 
 			if op_code == "031":
 				'''Author: Nick Moss'''
-				result = math_ops.subtract(location)
+				result = calc.subtract(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle")
 					break
 
 			if op_code == "032":
 				'''Author: Nick Moss'''
-				result = math_ops.multiply(location)
+				result = calc.multiply(location)
 				if result is False:
 					print("The product of the values was too big or too small to handle")
 					break
 
 			if op_code == "033":
 				'''Author: Nick Moss'''
-				result = math_ops.divide(location)
+				result = calc.divide(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle, or there was a division by zero")
 					break
