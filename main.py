@@ -8,6 +8,7 @@ import registers
 import io_ops
 
 def main():
+	math = math_ops.Math_Ops()
 	print("*** Welcome to UVSim! ***")
 	memory.init()
 	print("*** Program execution begins  ***\n")
@@ -53,28 +54,28 @@ def main():
 
 			if op_code == "030":
 				'''Author: Nick Moss'''
-				result = math_ops.add(location)
+				result = math.add(location)
 				if result is False:
 					print("The sum of the values was too big or too small to handle")
 					break
 
 			if op_code == "031":
 				'''Author: Nick Moss'''
-				result = math_ops.subtract(location)
+				result = math.subtract(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle")
 					break
 
 			if op_code == "032":
 				'''Author: Nick Moss'''
-				result = math_ops.multiply(location)
+				result = math.multiply(location)
 				if result is False:
 					print("The product of the values was too big or too small to handle")
 					break
 
 			if op_code == "033":
 				'''Author: Nick Moss'''
-				result = math_ops.divide(location)
+				result = math.divide(location)
 				if result is False:
 					print("The difference of the values was too big or too small to handle, or there was a division by zero")
 					break
