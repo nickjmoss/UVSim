@@ -1,6 +1,6 @@
+'''Author: Kyle Meiners'''
 
 import mock
-
 import memory
 
 
@@ -12,11 +12,11 @@ def test_memory_created():
     
 
 
-def test_load():
+def test_init():
     assert memory.memory_dict["00"] == "00000"
     assert memory.memory_dict["01"] == "00000"
     with mock.patch('builtins.input', return_value="+1004"):
-        memory.load()
+        memory.init()
         assert memory.memory_dict["00"] == "01004"
 
     print("test_load - pass")
@@ -25,7 +25,7 @@ def test_load():
 
 
 test_memory_created()
-test_load()
+test_init()
 
 print("All test cases passed")
 
