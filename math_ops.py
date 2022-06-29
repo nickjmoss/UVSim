@@ -2,7 +2,6 @@
 Author: Nick Moss
 '''
 import registers
-import memory
 
 class Math_Ops:
 	def num_format(self, num):
@@ -27,7 +26,7 @@ class Math_Ops:
 		else:
 			return int(string_value[1:])
 
-	def add(self, location):
+	def add(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
 		val2 = self.convert(memory.memory_dict[location])
 		result = val1 + val2
@@ -38,7 +37,7 @@ class Math_Ops:
 
 		return True
 
-	def subtract(self, location):
+	def subtract(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
 		val2 = self.convert(memory.memory_dict[location])
 		result = val1 - val2
@@ -49,7 +48,7 @@ class Math_Ops:
 
 		return True
 
-	def multiply(self, location):
+	def multiply(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
 		val2 = self.convert(memory.memory_dict[location])
 		result = val1 * val2
@@ -60,7 +59,7 @@ class Math_Ops:
 
 		return True
 
-	def divide(self, location):
+	def divide(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
 		val2 = self.convert(memory.memory_dict[location])
 		if val2 == 0:

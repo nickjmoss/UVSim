@@ -1,8 +1,9 @@
-#Author: Gavin Doel
-import registers
-import memory
+'''Author: Gavin Doel'''
 
-def store(location):
+import registers
+
+def store(location, memory):
     word = registers.registers["ACC"]
     memory.memory_dict[location] = word
+
     

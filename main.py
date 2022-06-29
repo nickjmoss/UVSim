@@ -1,5 +1,5 @@
 # The main file to run UVSimulator
-import memory
+import memory as mem
 import math_ops
 import branch
 import load
@@ -9,6 +9,10 @@ import io_ops
 
 def main():
 	math = math_ops.Math_Ops()
+	memory = mem.Memory()
+	io = io_ops.IO()
+	br = branch.Branch()
+
 	print("*** Welcome to UVSim! ***")
 	memory.init()
 	print("*** Program execution begins  ***\n")
@@ -38,65 +42,68 @@ def main():
 
 			if op_code == "010":
 				'''Author: Melissa Dunn'''
-				io_ops.read(location)
+				io.read(location, memory)
 
 			if op_code == "011":
 				'''Author: Melissa Dunn'''
-				io_ops.write(location)
+				io.write(location, memory)
 
 			if op_code == "020":
 				'''Author: Nick Moss'''
-				load.load(location)
+				load.load(location, memory)
 
 			if op_code == "021":
-                #Author Gavin Doel
-				store.store(mem_dict[word][3:])
+				'''Author Gavin Doel'''
+				store.store(location, memory)
 
 			if op_code == "030":
 				'''Author: Nick Moss'''
-				result = math.add(location)
+				result = math.add(location, memory)
 				if result is False:
 					print("The sum of the values was too big or too small to handle")
 					break
 
 			if op_code == "031":
 				'''Author: Nick Moss'''
-				result = math.subtract(location)
+				result = math.subtract(location, memory)
 				if result is False:
 					print("The difference of the values was too big or too small to handle")
 					break
 
 			if op_code == "032":
 				'''Author: Nick Moss'''
-				result = math.multiply(location)
+				result = math.multiply(location, memory)
 				if result is False:
 					print("The product of the values was too big or too small to handle")
 					break
 
 			if op_code == "033":
 				'''Author: Nick Moss'''
-				result = math.divide(location)
+				result = math.divide(location, memory)
 				if result is False:
 					print("The difference of the values was too big or too small to handle, or there was a division by zero")
 					break
 
 			if op_code == "040":
-                #Author: Gavin Doel
-				branch.branch(mem_dict[word][3:])
-				iter_count = int(mem_dict[word][3:])
+				'''Author: Gavin Doel'''
+				br.branch(location)
+				iter_count = int(location)
+				continue
 
 			if op_code == "041":
-                #Author: Gavin Doel
+				'''Author: Gavin Doel'''
 				if int(registers.registers["ACC"]) < 0:
-					branch.branch(mem_dict[word][3:])
-					iter_count = int(mem_dict[word][3:])
+					br.branch(location)
+					iter_count = int(location)
+					continue
 
 
 			if op_code == "042":
-                #Author: Gavin Doel
+				'''Author: Gavin Doel'''
 				if int(registers.registers["ACC"]) == 0:
-					branch.branch(mem_dict[word][3:])
-					iter_count = int(mem_dict[word][3:])
+					br.branch(location)
+					iter_count = int(location)
+					continue
 
 
 			if op_code == "043":
@@ -108,6 +115,7 @@ def main():
 
 	print("\nMEMORY:")
 	memory.read()
+
 
 if __name__ == "__main__":
 	main()
