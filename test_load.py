@@ -1,8 +1,10 @@
 '''Author: Kyle Meiners'''
 
 import load
-import memory
+import memory as mem
 import registers
+
+memory = mem.Memory()
 
 def test_load():
     location = "00"
