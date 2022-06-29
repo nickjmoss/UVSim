@@ -2,7 +2,6 @@
 Author: Nick Moss
 '''
 import registers
-import memory
 
 def num_format(num):
 	while len(num) < 4:
@@ -26,7 +25,7 @@ def convert(num):
 	else:
 		return int(string_value[1:])
 
-def add(location):
+def add(location, memory):
 	val1 = convert(registers.registers['ACC'])
 	val2 = convert(memory.memory_dict[location])
 	result = val1 + val2
@@ -37,7 +36,7 @@ def add(location):
 
 	return True
 
-def subtract(location):
+def subtract(location, memory):
 	val1 = convert(registers.registers['ACC'])
 	val2 = convert(memory.memory_dict[location])
 	result = val1 - val2
@@ -48,7 +47,7 @@ def subtract(location):
 
 	return True
 
-def multiply(location):
+def multiply(location, memory):
 	val1 = convert(registers.registers['ACC'])
 	val2 = convert(memory.memory_dict[location])
 	result = val1 * val2
@@ -59,7 +58,7 @@ def multiply(location):
 
 	return True
 
-def divide(location):
+def divide(location, memory):
 	val1 = convert(registers.registers['ACC'])
 	val2 = convert(memory.memory_dict[location])
 	if val2 == 0:

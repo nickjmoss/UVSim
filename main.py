@@ -1,5 +1,5 @@
 # The main file to run UVSimulator
-import memory
+import memory as mem
 import math_ops
 import branch
 import load
@@ -49,10 +49,9 @@ def main():
                 '''Author: Nick Moss'''
                 load.load(location)
 
-            if op_code == "021":
+			      if op_code == "021":
                 '''Author Gavin Doel'''
-                st = store.Store()
-                st.store(location)
+				        store.store(location, memory)
 
             if op_code == "030":
                 '''Author: Nick Moss'''
@@ -113,6 +112,7 @@ def main():
 
     print("\nMEMORY:")
     memory.read()
+
 
 if __name__ == "__main__":
     main()
