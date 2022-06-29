@@ -1,14 +1,17 @@
 '''Author: Kyle Meiners'''
     
-import io_ops
-import memory
+from io_ops import IO
+import memory as mem
 import mock
+
+memory = mem.Memory()
 
 
 def test_read():
+    io = IO()
     location = "00"
     with mock.patch('builtins.input', return_value="+1008"):
-        io_ops.read(location)
+        io.read(location)
         assert memory.memory_dict[location] == "01008"
     print("test case passed")
 
