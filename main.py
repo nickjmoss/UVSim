@@ -8,6 +8,7 @@ import registers
 import io_ops
 
 def main():
+    memory = mem.Memory()
     print("*** Welcome to UVSim! ***")
     memory.init()
     print("*** Program execution begins  ***\n")
@@ -49,9 +50,9 @@ def main():
                 '''Author: Nick Moss'''
                 load.load(location)
 
-			      if op_code == "021":
+            if op_code == "021":
                 '''Author Gavin Doel'''
-				        store.store(location, memory)
+                store.store(location, memory)
 
             if op_code == "030":
                 '''Author: Nick Moss'''
