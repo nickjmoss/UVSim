@@ -40,15 +40,15 @@ def main():
 
             if op_code == "010":
                 '''Author: Melissa Dunn'''
-                io_ops.read(location)
+                io_ops.read(location, memory)
 
             if op_code == "011":
                 '''Author: Melissa Dunn'''
-                io_ops.write(location)
+                io_ops.write(location, memory)
 
             if op_code == "020":
                 '''Author: Nick Moss'''
-                load.load(location)
+                load.load(location, memory)
 
             if op_code == "021":
                 '''Author Gavin Doel'''
@@ -56,28 +56,28 @@ def main():
 
             if op_code == "030":
                 '''Author: Nick Moss'''
-                result = math_ops.add(location)
+                result = math_ops.add(location, memory)
                 if result is False:
                     print("The sum of the values was too big or too small to handle")
                     break
 
             if op_code == "031":
                 '''Author: Nick Moss'''
-                result = math_ops.subtract(location)
+                result = math_ops.subtract(location, memory)
                 if result is False:
                     print("The difference of the values was too big or too small to handle")
                     break
 
             if op_code == "032":
                 '''Author: Nick Moss'''
-                result = math_ops.multiply(location)
+                result = math_ops.multiply(location, memory)
                 if result is False:
                     print("The product of the values was too big or too small to handle")
                     break
 
             if op_code == "033":
                 '''Author: Nick Moss'''
-                result = math_ops.divide(location)
+                result = math_ops.divide(location, memory)
                 if result is False:
                     print("The difference of the values was too big or too small to handle, or there was a division by zero")
                     break
