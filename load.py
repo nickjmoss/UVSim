@@ -1,8 +1,7 @@
 '''
 Author: Nick Moss
 '''
-import memory
 import registers as reg
 
-def load(location):
+def load(location, memory):
 	reg.registers["ACC"] = memory.memory_dict[location]

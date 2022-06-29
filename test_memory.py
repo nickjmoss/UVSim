@@ -1,8 +1,9 @@
 '''Author: Kyle Meiners'''
 
 import mock
-import memory
+import memory as mem
 
+memory = mem.Memory()
 
 def test_memory_created():
     assert isinstance(memory.memory_dict, dict)
