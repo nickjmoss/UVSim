@@ -8,6 +8,7 @@ import registers
 import io_ops
 
 def main():
+	math = math_ops.Math_Ops()
 	memory = mem.Memory()
 	io = io_ops.IO()
 	br = branch.Branch()
@@ -57,28 +58,28 @@ def main():
 
 			if op_code == "030":
 				'''Author: Nick Moss'''
-				result = math_ops.add(location, memory)
+				result = math.add(location, memory)
 				if result is False:
 					print("The sum of the values was too big or too small to handle")
 					break
 
 			if op_code == "031":
 				'''Author: Nick Moss'''
-				result = math_ops.subtract(location, memory)
+				result = math.subtract(location, memory)
 				if result is False:
 					print("The difference of the values was too big or too small to handle")
 					break
 
 			if op_code == "032":
 				'''Author: Nick Moss'''
-				result = math_ops.multiply(location, memory)
+				result = math.multiply(location, memory)
 				if result is False:
 					print("The product of the values was too big or too small to handle")
 					break
 
 			if op_code == "033":
 				'''Author: Nick Moss'''
-				result = math_ops.divide(location, memory)
+				result = math.divide(location, memory)
 				if result is False:
 					print("The difference of the values was too big or too small to handle, or there was a division by zero")
 					break
