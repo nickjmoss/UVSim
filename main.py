@@ -20,6 +20,8 @@ def main():
     #iteration count is used for branching
     iter_count = 0
 
+    br = branch.Branch()
+
     while iter_count != 100:
 
         #If iteration less than ten, convert to string, and add zero at beginning
@@ -82,7 +84,6 @@ def main():
 
             if op_code == "040":
                 '''Author: Gavin Doel'''
-                br = branch.Branch()
                 br.branch(location)
                 iter_count = int(location)
                 continue
@@ -90,7 +91,6 @@ def main():
             if op_code == "041":
                 '''Author: Gavin Doel'''
                 if int(registers.registers["ACC"]) < 0:
-                    br = branch.Branch()
                     br.branch(location)
                     iter_count = int(location)
                     continue
@@ -99,7 +99,6 @@ def main():
             if op_code == "042":
                 '''Author: Gavin Doel'''
                 if int(registers.registers["ACC"]) == 0:
-                    br = branch.Branch()
                     br.branch(location)
                     iter_count = int(location)
                     continue
