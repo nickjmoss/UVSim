@@ -8,7 +8,7 @@ memory = mem.Memory()
 
 def test_load():
     location = "00"
-    load.load(location)
+    load.load(location, memory)
     assert registers.registers["ACC"] == memory.memory_dict[location]
     print("Test case passed")
 
