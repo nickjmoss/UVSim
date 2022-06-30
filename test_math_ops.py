@@ -30,11 +30,11 @@ def test_add():
     math = Math_Ops()
     registers.registers["ACC"] = "00003"
     memory.memory_dict["05"] = "00007"
-    math.add("05")
+    math.add("05", memory)
     assert registers.registers["ACC"] == "00010"
 
     memory.memory_dict["05"] = "10002"
-    math.add("05")
+    math.add("05", memory)
     assert registers.registers["ACC"] == "00008"
     print("test_add - pass")
 
@@ -43,12 +43,12 @@ def test_subtract():
     math = Math_Ops()
     registers.registers["ACC"] = "00009"
     memory.memory_dict["05"] = "00002"
-    math.subtract("05")
+    math.subtract("05", memory)
     assert registers.registers["ACC"] == "00007"
 
     registers.registers["ACC"] = "00009"
     memory.memory_dict["05"] = "10002"
-    math.subtract("05")
+    math.subtract("05", memory)
     assert registers.registers["ACC"] == "00011"
     print("test_subtract - pass")
 
@@ -58,12 +58,12 @@ def test_multiply():
     math = Math_Ops()
     registers.registers["ACC"] = "00005"
     memory.memory_dict["05"] = "00002"
-    math.multiply("05")
+    math.multiply("05", memory)
     assert registers.registers["ACC"] == "00010"
 
     registers.registers["ACC"] = "10007"
     memory.memory_dict["05"] = "00003"
-    math.multiply("05")
+    math.multiply("05", memory)
     assert registers.registers["ACC"] == "10021"
     print("test_multiply - pass")
 
@@ -72,13 +72,13 @@ def test_divide():
     math = Math_Ops()
     registers.registers["ACC"] = "00020"
     memory.memory_dict["05"] = "00005"
-    math.divide("05")
+    math.divide("05", memory)
     assert registers.registers["ACC"] == "00004"
     print("test_divide - pass")
 
     registers.registers["ACC"] = "10015"
     memory.memory_dict["05"] = "00005"
-    math.divide("05")
+    math.divide("05", memory)
     assert registers.registers["ACC"] == "10003"
     print("test_multiply - pass")
 
