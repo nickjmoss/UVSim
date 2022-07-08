@@ -1,5 +1,4 @@
 # The main file to run UVSimulator
-import memory as mem
 import math_ops
 import branch
 import load
@@ -7,15 +6,11 @@ import store
 import registers
 import io_ops
 
-def main():
+
+def execute(memory):
 	math = math_ops.Math_Ops()
-	memory = mem.Memory()
 	io = io_ops.IO()
 	br = branch.Branch()
-
-	print("*** Welcome to UVSim! ***")
-	memory.init()
-	print("*** Program execution begins  ***\n")
 
 	mem_dict = memory.memory_dict
 
@@ -112,10 +107,3 @@ def main():
 		#Update Iteration count and assign PC
 		iter_count += 1
 		registers.registers["PC"] = str(iter_count)
-
-	print("\nMEMORY:")
-	memory.read()
-
-
-if __name__ == "__main__":
-	main()
