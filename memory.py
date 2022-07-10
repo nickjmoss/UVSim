@@ -2,6 +2,7 @@
 Author: Melissa Dunn
 '''
 
+from cgitb import text
 import re
 from tkinter import *
 
@@ -25,7 +26,7 @@ class Memory:
                 print(Memory.memory_dict[position], end=" ")
             print()
 
-    def read_program(self, root):
+    def read_program(self, text_widget, root):
         def print_on_gui(*args, sep=" ", end="\n"):
             text = sep.join(args) + end
             # Set the Text widget's state to normal so that we can edit its text
@@ -35,8 +36,6 @@ class Memory:
             # Set the Text widget's state to disabled to disallow the user changing the text
             text_widget.config(state="disabled")
 
-        # Create a new `Text` widget
-        text_widget = Text(root, state="disabled")
         # Show the widget on the screen
         text_widget.pack(fill="both", expand=True)
 
@@ -54,8 +53,6 @@ class Memory:
                 position = str(int(row) + int(col)).zfill(2)
                 print_on_gui(Memory.memory_dict[position], end=" ")
             print_on_gui()
-
-
 
     def init(self):
         print(
