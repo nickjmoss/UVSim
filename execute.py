@@ -6,7 +6,6 @@ import store
 import registers
 import io_ops
 
-
 def execute(memory):
 	math = math_ops.Math_Ops()
 	io = io_ops.IO()

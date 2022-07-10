@@ -1,41 +1,52 @@
-from tkinter import *
-from memory import *
-from execute import *
+import tkinter as tk
+import memory as mem
+import execute
 
-root = Tk()
-m = Memory()
+root = tk.Tk()
+m = mem.Memory()
 root.title("UVSim")
 root.geometry("500x500")
+
 
 def run():
     clear_widget(memory_widget)
     inp = inputtxt.get(1.0, "end-1c")
-    m.load_program(inp, root)
+    success = m.load_program(inp, root)
+    if success is False:
+        error_message.config(fg="#A00")
+        memory_lbl.pack_forget()
+        memory_widget.pack_forget()
+        return
+    error_message.config(fg="#F0F0F0")
+    execute.execute(m)
 
-    execute(m)
-
-    Label(root, fg="#000", text="Memory:").pack()
+    memory_lbl.pack()
     memory_widget.config(state="disabled")
     m.read_program(memory_widget, root)
 
 def clear_widget(text_widget):
     text_widget.config(state="normal")
-    text_widget.delete(1.0,END)
+    text_widget.delete(1.0,tk.END)
 
-Label(root, fg="#009", text=
+# Label for instructions
+tk.Label(root, fg="#009", text=
         "Welcome to UVSim\n"
         "Enter your program below. Enter each word / instruction on a newline."
     ).pack()
-Label(root, fg= "#000", text="Console:").pack()
-inputtxt = Text(root, height = 5, width = 20, fg="#fff")
+# Label and text box for user input
+tk.Label(root, fg= "#000", text="Console:").pack()
+inputtxt = tk.Text(root, height = 5, width = 20, fg="#fff")
 inputtxt.pack()
 
-printbutton = Button(root, text="Execute Program", fg="#000", command=run)
+# Button to load and execute program
+printbutton = tk.Button(root, text="Execute Program", fg="#000", command=run)
 printbutton.pack()
 
-memory_widget = Text(root)
+error_message = tk.Label(root, text="Invalid Entry. Re-enter program.", fg="#F0F0F0")
+error_message.pack()
 
-lbl = Label(root, text = "")
-lbl.pack()
+memory_lbl = tk.Label(root, fg="#000", text="Memory:")
+# Widget for the program memory
+memory_widget = tk.Text(root, height = 5, width = 20)
 
 root.mainloop()

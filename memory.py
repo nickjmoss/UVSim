@@ -2,7 +2,6 @@
 Author: Melissa Dunn
 '''
 
-from cgitb import text
 import re
 from tkinter import *
 
@@ -95,9 +94,7 @@ class Memory:
                     raise StopIteration
 
                 if(re.fullmatch("^[+-]\d{4}", instruction) is None):
-                    lbl = Label(root, fg = "#F00", text = "Invalid Entry. Re-enter program.")
-                    lbl.pack()
-                    break
+                    return False
 
                 # Parse user input for memory ( + => 0 and - => 1 )
                 instruction = instruction.replace("+", "0").replace("-", "1")
