@@ -55,8 +55,6 @@ class Memory:
                 print_on_gui(Memory.memory_dict[position], end=" ")
             print_on_gui()
 
-
-
     def init(self):
         print(
             "*** Please enter your program one instruction ***\n"\
