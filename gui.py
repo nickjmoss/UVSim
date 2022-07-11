@@ -9,6 +9,7 @@ root.geometry("500x500")
 
 
 def run():
+    m.reset()
     clear_widget(memory_widget)
     inp = inputtxt.get(1.0, "end-1c")
     success = m.load_program(inp, root)

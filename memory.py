@@ -9,6 +9,9 @@ class Memory:
 
     memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
 
+    def reset(self):
+        Memory.memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
+
     def read(self):
         cols = [str(x).zfill(2) for x in range(0,10)]
         rows = [str(x).zfill(2) for x in range(0,100,10)]
