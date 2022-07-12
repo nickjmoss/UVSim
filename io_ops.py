@@ -6,9 +6,6 @@ import re
 import tkinter as tk
 
 class IO:
-    def clear_read():
-        pass
-
     def read(self, location, memory):
         error_message = tk.Label(fg="#F0F0F0", text="Invalid input. Try again.")
 
