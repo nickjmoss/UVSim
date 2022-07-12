@@ -36,7 +36,7 @@ tk.Label(root, fg="#009", text=
     ).pack()
 # Label and text box for user input
 tk.Label(root, fg= "#000", text="Console:").pack()
-inputtxt = tk.Text(root, height = 5, width = 20, fg="#fff")
+inputtxt = tk.Text(root, height = 5, width = 20, fg="#FFF", bg="#000")
 inputtxt.pack()
 
 # Button to load and execute program
@@ -48,6 +48,6 @@ error_message.pack()
 
 memory_lbl = tk.Label(root, fg="#000", text="Memory:")
 # Widget for the program memory
-memory_widget = tk.Text(root, height = 5, width = 20)
+memory_widget = tk.Text(root, height = 5, width = 20, bg="#000", fg="#FFF")
 
 root.mainloop()
