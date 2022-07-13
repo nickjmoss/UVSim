@@ -16,8 +16,8 @@ All information is handled in terms of words. A word is a signed 4 digit number,
 | 21 | Store |Store a word from the accumulator into a specific location in memory. |
 | 30 | Add |Add a word from a specific location in memory to the word in the accumulator (leave the result in the accumulator). |
 | 31 | Subtract | Subtract a word from a specific location in memory from the word in the accumulator (leave the result in the accumulator). |
-| 32 | Divide | Divide the word in the accumulator by a word from a specific location in memory (leave the result in the accumulator). |
-| 33 | Multiply | multiply a word from a specific location in memory to the word in the accumulator (leave the result in the accumulator). |
+| 32 | Multiply | multiply a word from a specific location in memory to the word in the accumulator (leave the result in the accumulator). |
+| 33 | Divide | Divide the word in the accumulator by a word from a specific location in memory (leave the result in the accumulator). |
 | 40 | Branch | Branch to a specific location in memory. |
 | 41 | BranchNeg | Branch to a specific location in memory if the accumulator is negative. |
 | 42 | BranchZero | Branch to a specific location in memory if the accumulator is zero. |
