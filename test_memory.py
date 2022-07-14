@@ -24,6 +24,7 @@ def test_init():
 
 
 def test_reset():
+	'''Author: Nick Moss'''
 	memory.memory_dict["00"] = "11111"
 	memory.reset();
 	assert memory.memory_dict["00"] == "00000"
