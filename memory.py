@@ -28,7 +28,7 @@ class Memory:
                 print(Memory.memory_dict[position], end=" ")
             print()
 
-    def read_program(self, text_widget, root):
+    def read_program(self, text_widget):
         def print_on_gui(*args, sep=" ", end="\n"):
             text = sep.join(args) + end
             # Set the Text widget's state to normal so that we can edit its text
@@ -88,7 +88,7 @@ class Memory:
             user_input = user_input.replace("+", "0").replace("-", "1")
             Memory.memory_dict[location] = user_input
 
-    def load_program(self, program, root):
+    def load_program(self, program):
         program = program.split("\n")
         try:
             for location, instruction in zip(Memory.memory_dict, program):
