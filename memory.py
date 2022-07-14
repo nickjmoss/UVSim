@@ -8,13 +8,13 @@ class Memory:
 
     memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
 
-    def store(location, input):
+    def store(self, location, input):
         '''Author: Kyle Meiners'''
         dec = int(input)
         b32 = base32.dec_to_b32(dec)
         Memory.memory_dict[location] = b32
 
-    def get(location):
+    def get(self, location):
         '''Author: Kyle Meiners'''
         b32 = Memory.memory_dict[location]
         dec = base32.b32_to_dec(b32)
