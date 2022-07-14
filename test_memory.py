@@ -23,10 +23,18 @@ def test_init():
     print("test_load - pass")
 
 
+def test_reset():
+	memory.memory_dict["00"] = "11111"
+	memory.reset();
+	assert memory.memory_dict["00"] == "00000"
+
+	print("Memory reset test passed")
+
 
 
 test_memory_created()
 test_init()
+test_reset()
 
 print("All test cases passed")
 
