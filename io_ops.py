@@ -18,10 +18,11 @@ class IO:
             else:
                 break
         user_input = user_input.replace("+", "0").replace("-", "1")
-        memory.memory_dict[location] = (user_input).zfill(5)
+        memory.store(location, (user_input).zfill(5)
 
     def write(self, location, memory):
         '''Write a word from a specific location in memory to screen.'''
 
         output = re.sub(r'^1', "-", memory.memory_dict[location])
+        output = re.sub(r'^1', "-", memory.get(location))
         print(f"Contents of {int(location)} is {int(output)}")
