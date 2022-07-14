@@ -3,10 +3,24 @@ Author: Melissa Dunn
 '''
 
 import re
-
+import base32
 class Memory:
 
     memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
+
+    def store(location, input):
+        '''Author: Kyle Meiners'''
+        dec = int(input)
+        b32 = base32.dec_to_b32(dec)
+        Memory.memory_dict[location] = b32
+
+    def get(location):
+        '''Author: Kyle Meiners'''
+        b32 = Memory.memory_dict[location]
+        dec = base32.b32_to_dec(b32)
+        dec = str(dec)
+        return dec
+
 
     def read(self):
         cols = [str(x).zfill(2) for x in range(0,10)]
@@ -54,4 +68,4 @@ class Memory:
 
             # Parse user input for memory ( + => 0 and - => 1 )
             user_input = user_input.replace("+", "0").replace("-", "1")
-            Memory.memory_dict[location] = user_input
+            Memory.store(location, user_input)
