@@ -35,7 +35,7 @@ class Memory:
             print(row, end="  ")
             for col in cols:
                 position = str(int(row) + int(col)).zfill(2)
-                print(Memory.get(position0,end=" ")
+                print(Memory.get(position),end=" ")
             print()
 
     def init(self):
