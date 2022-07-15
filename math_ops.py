@@ -21,6 +21,8 @@ class Math_Ops:
 
 	def convert(self, num):
 		string_value = str(num)
+		if len(string_value) > 5:
+			return int(string_value)
 		if string_value[0] == '1':
 			return -(int(string_value[1:]))
 		else:
@@ -30,7 +32,7 @@ class Math_Ops:
 		val1 = self.convert(registers.registers['ACC'])
 		val2 = self.convert(memory.get(location))
 		result = val1 + val2
-		if result > 9999 or result < -9999:
+		if result > 9999999 or result < -9999999:
 			return False
 
 		registers.registers['ACC'] = self.final_result(result)
@@ -41,7 +43,7 @@ class Math_Ops:
 		val1 = self.convert(registers.registers['ACC'])
 		val2 = self.convert(memory.get(location))
 		result = val1 - val2
-		if result > 9999 or result < -9999:
+		if result > 9999999 or result < -9999999:
 			return False
 
 		registers.registers['ACC'] = self.final_result(result)
@@ -52,7 +54,7 @@ class Math_Ops:
 		val1 = self.convert(registers.registers['ACC'])
 		val2 = self.convert(memory.get(location))
 		result = val1 * val2
-		if result > 9999 or result < -9999:
+		if result > 9999999 or result < -9999999:
 			return False
 
 		registers.registers['ACC'] = self.final_result(result)
@@ -65,7 +67,7 @@ class Math_Ops:
 		if val2 == 0:
 			return False
 		result = val1 // val2
-		if result > 9999 or result < -9999:
+		if result > 9999999 or result < -9999999:
 			return False
 
 		registers.registers['ACC'] = self.final_result(result)

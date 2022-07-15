@@ -7,9 +7,7 @@ import base32
 from tkinter import *
 
 class Memory:
-
-    memory_dict = {str(x).zfill(2): "A" for x in range(0,100)}
-
+    memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
  
     def store(self,location, input):
         '''Author: Kyle Meiners'''
@@ -22,7 +20,7 @@ class Memory:
         '''Author: Kyle Meiners'''
         b32 = self.memory_dict[location]
         dec = base32.b32_to_dec(b32)
-        dec = str(dec)
+        dec = str(dec).zfill(5)
         return dec
 
 
@@ -42,7 +40,7 @@ class Memory:
             print(row, end="  ")
             for col in cols:
                 position = str(int(row) + int(col)).zfill(2)
-                print("{:>6}".format(self.get(position)), end=" ")
+                print("{:>6}".format(self.get(position).zfill(5)), end=" ")
             print()
 
     def read_gui(self, text_widget):

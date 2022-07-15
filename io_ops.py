@@ -14,7 +14,7 @@ class IO:
 
             user_input = input()
 
-            if(re.fullmatch("^[+-]?\d{1,4}", user_input) is None):
+            if(re.fullmatch("^[+-]?\d{1,6}", user_input) is None):
                 print("Invalid input. Try again.")
             else:
                 break
