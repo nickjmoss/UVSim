@@ -6,15 +6,17 @@ import re
 import base32
 class Memory:
 
-    memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
+    memory_dict = {str(x).zfill(2): "A" for x in range(0,100)}
 
-    def store(self, location, input):
+    @staticmethod
+    def store(location, input):
         '''Author: Kyle Meiners'''
         dec = int(input)
         b32 = base32.dec_to_b32(dec)
         Memory.memory_dict[location] = b32
 
-    def get(self, location):
+    @staticmethod
+    def get(location):
         '''Author: Kyle Meiners'''
         b32 = Memory.memory_dict[location]
         dec = base32.b32_to_dec(b32)
@@ -35,7 +37,7 @@ class Memory:
             print(row, end="  ")
             for col in cols:
                 position = str(int(row) + int(col)).zfill(2)
-                print(Memory.get(position),end=" ")
+                print(Memory.get(position),end="     ")
             print()
 
     def init(self):
