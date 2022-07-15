@@ -22,6 +22,10 @@ class Memory:
         '''Author: Kyle Meiners'''
         b32 = Memory.memory_dict[location]
         dec = base32.b32_to_dec(b32)
+        if dec < 0:
+            dec = str(dec)
+            dec += '1'
+            return dec
         dec = str(dec)
         return dec
 
@@ -102,7 +106,6 @@ class Memory:
                 break
 
             # Parse user input for memory ( + => 0 and - => 1 )
-            user_input = user_input.replace("+", "0").replace("-", "1")
             Memory.store(location, user_input)
 
     def load_gui(self, program):
@@ -121,3 +124,4 @@ class Memory:
                 Memory.memory_dict[location] = instruction
         except StopIteration:
             pass
+
