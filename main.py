@@ -34,8 +34,8 @@ def main():
 		else:
 			word = str(iter_count)
 
-		op_code = mem_dict[word][:3]
-		location = mem_dict[word][-2:]
+		op_code = memory.get(word)[:3]
+		location = memory.get(word)[-2:]
 
 		if op_code in op_codes:
 			# fuctions will be called in order corrisponding to their identifiers

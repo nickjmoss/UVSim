@@ -14,20 +14,20 @@ class IO:
 
             user_input = input()
 
-            if(re.fullmatch("^[+-]?\d{1,4}", user_input) is None):
+            if(re.fullmatch("^[+-]?\d{1,6}", user_input) is None):
                 print("Invalid input. Try again.")
             else:
                 break
 
         
-        memory.store(location, (user_input).zfill(5)
+        memory.store(location, (user_input).zfill(5))
         if user_input.startswith("-"):
             user_input = user_input.replace("-","")
             user_input = (user_input).zfill(5)
             user_input = str(int(user_input) * -1)
         else:
             user_input = user_input.replace("+", "0")
-        memory.store(location, (user_input).zfill(5)
+        memory.store(location, (user_input).zfill(5))
 
 
     def write(self, location, memory):
