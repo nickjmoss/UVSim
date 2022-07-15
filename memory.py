@@ -23,7 +23,6 @@ class Memory:
         dec = str(dec).zfill(5)
         return dec
 
-
     def reset(self):
         self.memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
 
@@ -119,3 +118,4 @@ class Memory:
                 self.memory_dict[location] = instruction
         except StopIteration:
             pass
+
