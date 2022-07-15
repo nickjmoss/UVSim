@@ -36,11 +36,11 @@ def execute(memory):
 
 			if op_code == "010":
 				'''Author: Melissa Dunn'''
-				io.read(location, memory)
+				io.read_gui(location, memory)
 
 			if op_code == "011":
 				'''Author: Melissa Dunn'''
-				io.write(location, memory)
+				io.write_gui(location, memory)
 
 			if op_code == "020":
 				'''Author: Nick Moss'''

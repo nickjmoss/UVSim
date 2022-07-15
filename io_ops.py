@@ -7,6 +7,32 @@ import tkinter as tk
 
 class IO:
     def read(self, location, memory):
+        '''Read a word from the keyboard into a specific location in memor'''
+
+        while True:
+            print("Enter an integer: ", end="")
+
+            user_input = input()
+
+            if(re.fullmatch("^[+-]?\d{1,4}", user_input) is None):
+                print("Invalid input. Try again.")
+            else:
+                break
+        if user_input.startswith("-"):
+            user_input = user_input.replace("-","")
+            user_input = (user_input).zfill(5)
+            user_input = str(int(user_input) * -1)
+        else:
+            user_input = user_input.replace("+", "0")
+        memory.memory_dict[location] = (user_input).zfill(5)
+
+    def write(self, location, memory):
+        '''Write a word from a specific location in memory to screen.'''
+
+        output = re.sub(r'^1', "-", memory.memory_dict[location])
+        print(f"Contents of {int(location)} is {int(output)}")
+
+    def read_gui(self, location, memory):
         error_message = tk.Label(fg="#F0F0F0", text="Invalid input. Try again.")
 
         '''Read a word from the keyboard into a specific location in memory'''
@@ -29,7 +55,7 @@ class IO:
         error_message.pack()
         printbutton.pack()
 
-    def write(self, location, memory):
+    def write_gui(self, location, memory):
         '''Write a word from a specific location in memory to screen.'''
         output = re.sub(r'^1', "-", memory.memory_dict[location])
         tk.Label(fg="#000", text=f"Contents of {int(location)} is {int(output)}").pack()

@@ -12,7 +12,7 @@ def run():
     m.reset()
     clear_widget(memory_widget)
     inp = inputtxt.get(1.0, "end-1c")
-    success = m.load_program(inp)
+    success = m.load_gui(inp)
     if success is False:
         error_message.config(fg="#A00")
         memory_lbl.pack_forget()
@@ -23,7 +23,7 @@ def run():
 
     memory_lbl.pack()
     memory_widget.config(state="disabled")
-    m.read_program(memory_widget)
+    m.read_gui(memory_widget)
 
 def clear_widget(text_widget):
     text_widget.config(state="normal")
