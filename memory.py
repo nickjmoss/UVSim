@@ -30,14 +30,14 @@ class Memory:
 
         print("   ", end="")
         for col in cols:
-            print ("{:>6}".format(col), end="")
+            print ("{:>6}".format(col), end=" ")
         print()
 
         for row in rows:
             print(row, end="  ")
             for col in cols:
                 position = str(int(row) + int(col)).zfill(2)
-                print(Memory.get(position),end="     ")
+                print("{:>6}".format(Memory.get(position)), end=" ")
             print()
 
     def init(self):
