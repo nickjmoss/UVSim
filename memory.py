@@ -13,7 +13,6 @@ class Memory:
  
     def store(self,location, input):
         '''Author: Kyle Meiners'''
-        input = input.replace('1','-')
         dec = int(input)
         b32 = base32.dec_to_b32(dec)
         Memory.memory_dict[location] = b32
