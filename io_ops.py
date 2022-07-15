@@ -18,18 +18,23 @@ class IO:
                 print("Invalid input. Try again.")
             else:
                 break
+
+        
+        memory.store(location, (user_input).zfill(5)
         if user_input.startswith("-"):
             user_input = user_input.replace("-","")
             user_input = (user_input).zfill(5)
             user_input = str(int(user_input) * -1)
         else:
             user_input = user_input.replace("+", "0")
-        memory.memory_dict[location] = (user_input).zfill(5)
+        memory.store(location, (user_input).zfill(5)
+
 
     def write(self, location, memory):
         '''Write a word from a specific location in memory to screen.'''
 
         output = re.sub(r'^1', "-", memory.memory_dict[location])
+        output = re.sub(r'^1', "-", memory.get(location))
         print(f"Contents of {int(location)} is {int(output)}")
 
     def read_gui(self, location, memory):

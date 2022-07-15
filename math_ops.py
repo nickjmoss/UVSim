@@ -28,7 +28,7 @@ class Math_Ops:
 
 	def add(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
-		val2 = self.convert(memory.memory_dict[location])
+		val2 = self.convert(memory.get(location))
 		result = val1 + val2
 		if result > 9999 or result < -9999:
 			return False
@@ -39,7 +39,7 @@ class Math_Ops:
 
 	def subtract(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
-		val2 = self.convert(memory.memory_dict[location])
+		val2 = self.convert(memory.get(location))
 		result = val1 - val2
 		if result > 9999 or result < -9999:
 			return False
@@ -50,7 +50,7 @@ class Math_Ops:
 
 	def multiply(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
-		val2 = self.convert(memory.memory_dict[location])
+		val2 = self.convert(memory.get(location))
 		result = val1 * val2
 		if result > 9999 or result < -9999:
 			return False
@@ -61,7 +61,7 @@ class Math_Ops:
 
 	def divide(self, location, memory):
 		val1 = self.convert(registers.registers['ACC'])
-		val2 = self.convert(memory.memory_dict[location])
+		val2 = self.convert(memory.get(location))
 		if val2 == 0:
 			return False
 		result = val1 // val2

@@ -3,11 +3,28 @@ Author: Melissa Dunn
 '''
 
 import re
+import base32
 from tkinter import *
 
 class Memory:
 
-    memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
+    memory_dict = {str(x).zfill(2): "A" for x in range(0,100)}
+
+    @staticmethod
+    def store(location, input):
+        '''Author: Kyle Meiners'''
+        dec = int(input)
+        b32 = base32.dec_to_b32(dec)
+        Memory.memory_dict[location] = b32
+
+    @staticmethod
+    def get(location):
+        '''Author: Kyle Meiners'''
+        b32 = Memory.memory_dict[location]
+        dec = base32.b32_to_dec(b32)
+        dec = str(dec)
+        return dec
+
 
     def reset(self):
         Memory.memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
@@ -18,14 +35,14 @@ class Memory:
 
         print("   ", end="")
         for col in cols:
-            print ("{:>6}".format(col), end="")
+            print ("{:>6}".format(col), end=" ")
         print()
 
         for row in rows:
             print(row, end="  ")
             for col in cols:
                 position = str(int(row) + int(col)).zfill(2)
-                print(Memory.memory_dict[position], end=" ")
+                print("{:>6}".format(Memory.get(position)), end=" ")
             print()
 
     def read_gui(self, text_widget):
@@ -86,7 +103,7 @@ class Memory:
 
             # Parse user input for memory ( + => 0 and - => 1 )
             user_input = user_input.replace("+", "0").replace("-", "1")
-            Memory.memory_dict[location] = user_input
+            Memory.store(location, user_input)
 
     def load_gui(self, program):
         program = program.split("\n")
