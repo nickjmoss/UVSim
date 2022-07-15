@@ -20,14 +20,14 @@ class IO:
                 break
 
         
-        memory.store(location, (user_input).zfill(5)
+        memory.store(location, (user_input).zfill(5))
         if user_input.startswith("-"):
             user_input = user_input.replace("-","")
             user_input = (user_input).zfill(5)
             user_input = str(int(user_input) * -1)
         else:
             user_input = user_input.replace("+", "0")
-        memory.store(location, (user_input).zfill(5)
+        memory.store(location, (user_input).zfill(5))
 
 
     def write(self, location, memory):

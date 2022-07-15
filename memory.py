@@ -15,19 +15,19 @@ class Memory:
         '''Author: Kyle Meiners'''
         dec = int(input)
         b32 = base32.dec_to_b32(dec)
-        Memory.memory_dict[location] = b32
+        self.memory_dict[location] = b32
 
     
     def get(self, location):
         '''Author: Kyle Meiners'''
-        b32 = Memory.memory_dict[location]
+        b32 = self.memory_dict[location]
         dec = base32.b32_to_dec(b32)
         dec = str(dec)
         return dec
 
 
     def reset(self):
-        Memory.memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
+        self.memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
 
     def read(self):
         cols = [str(x).zfill(2) for x in range(0,10)]
@@ -42,7 +42,7 @@ class Memory:
             print(row, end="  ")
             for col in cols:
                 position = str(int(row) + int(col)).zfill(2)
-                print("{:>6}".format(Memory.get(position)), end=" ")
+                print("{:>6}".format(self.get(position)), end=" ")
             print()
 
     def read_gui(self, text_widget):
@@ -70,7 +70,7 @@ class Memory:
             print_on_gui(row, end="  ")
             for col in cols:
                 position = str(int(row) + int(col)).zfill(2)
-                print_on_gui(Memory.memory_dict[position], end=" ")
+                print_on_gui(self.memory_dict[position], end=" ")
             print_on_gui()
 
     def init(self):
@@ -83,7 +83,7 @@ class Memory:
             "*** -99999 to stop entering your program.     ***\n"\
         )
 
-        for location in Memory.memory_dict:
+        for location in self.memory_dict:
             while True:
                 print(f"{location} ? ", end="")
 
@@ -103,12 +103,12 @@ class Memory:
 
             # Parse user input for memory ( + => 0 and - => 1 )
             user_input = user_input.replace("+", "0").replace("-", "1")
-            Memory.store(location, user_input)
+            self.store(location, user_input)
 
     def load_gui(self, program):
         program = program.split("\n")
         try:
-            for location, instruction in zip(Memory.memory_dict, program):
+            for location, instruction in zip(self.memory_dict, program):
                 if(instruction == "-99999"):
                     Label(fg="#0A0", text="*** Program loading completed ***").pack()
                     raise StopIteration
@@ -118,6 +118,6 @@ class Memory:
 
                 # Parse user input for memory ( + => 0 and - => 1 )
                 instruction = instruction.replace("+", "0").replace("-", "1")
-                Memory.memory_dict[location] = instruction
+                self.memory_dict[location] = instruction
         except StopIteration:
             pass
