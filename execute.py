@@ -11,8 +11,6 @@ def execute(memory):
 	io = io_ops.IO()
 	br = branch.Branch()
 
-	mem_dict = memory.memory_dict
-
 	# op_codes is list with all opperand codes with "0" at beggining indecated for positive num
 	op_codes = ["010","011","020","021","030","031","032","033","040","041","042","043"]
 
@@ -28,8 +26,9 @@ def execute(memory):
 		else:
 			word = str(iter_count)
 
-		op_code = mem_dict[word][:3]
-		location = mem_dict[word][-2:]
+		command = memory.get(word)
+		op_code = command[:-2]
+		location = command[3:]
 
 		if op_code in op_codes:
 			# fuctions will be called in order corrisponding to their identifiers
