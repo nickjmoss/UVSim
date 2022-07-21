@@ -103,12 +103,10 @@ class Memory:
             self.store(location, user_input)
 
     def load_gui(self, program):
-        program = program.split("\n")
         try:
             for location, instruction in zip(self.memory_dict, program):
                 if(instruction == "-99999"):
-                    Label(fg="#0A0", text="*** Program loading completed ***").pack()
-                    raise StopIteration
+                    return True
 
                 if(re.fullmatch("^[+-]\d{4}", instruction) is None):
                     return False
