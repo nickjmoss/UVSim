@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import filedialog
 import gui_commands
 
 root = tk.Tk()
@@ -15,13 +14,18 @@ instructions.grid(columnspan=3, column=0, row=0)
 
 # File browse text
 browse_text = tk.StringVar()
-browse_btn = tk.Button(root, textvariable=browse_text, fg="#000", font="Raleway", command=lambda:gui_commands.open_file(printbutton, complete_label, complete_string))
+browse_btn = tk.Button(root, textvariable=browse_text, fg="#000", font="Raleway")
+browse_btn.config(command=lambda:gui_commands.open_file(printbutton, complete_label, complete_string, resetbutton))
 browse_text.set("Choose a File")
 browse_btn.grid(columnspan=3, column=0, row=1)
 
 # Button to load and execute program
-printbutton = tk.Button(root, text="Execute Program", fg="#000", command=lambda:gui_commands.run(memory_lbl, memory_widget, complete_label), state="disabled")
-printbutton.grid(columnspan=3, column=0, row=3)
+printbutton = tk.Button(root, text="Execute Program", fg="#000", state="disabled")
+printbutton.config(command=lambda:gui_commands.run(memory_lbl, memory_widget, complete_label, printbutton, resetbutton, browse_btn))
+
+# Reset Button
+resetbutton = tk.Button(root, text="Reset Program", fg="#000", state="active")
+resetbutton.config(command=lambda:gui_commands.reset(root, browse_btn, resetbutton, memory_widget, memory_lbl))
 
 # Memnory Label
 memory_lbl = tk.Label(root, fg="#000", text="Memory:")
@@ -37,6 +41,5 @@ memory_widget.grid(columnspan=3, column=0, row=10)
 # Integer input error message
 integer_string = tk.StringVar()
 integer_error_message = tk.Label(root)
-
 
 root.mainloop()

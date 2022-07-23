@@ -53,17 +53,17 @@ class IO:
 				loop_bool = False
 		
 		while loop_bool:
-			integer_label = tk.Label(fg="#000", text=f"Enter an integer for location {location}:")
+			integer_label = tk.Label(name="int_lbl", fg="#000", text=f"Enter an integer for location {location}:")
 			integer_label.grid(columnspan=1, column=0, row=4)
-			inputtxt = tk.Text(height = 1, width = 5, fg="black", bg="white")
+			inputtxt = tk.Text(height = 1, width = 5, fg="black", bg="white", name="inputtxt")
 			inputtxt.config(highlightbackground = "black", highlightcolor= "blue", highlightthickness=2)
 			inputtxt.grid(columnspan=1, column=1, row=4)
 			wait_var = tk.IntVar()
-			printbutton = tk.Button(text="Enter", fg="#000", command=lambda:enter(wait_var))
+			printbutton = tk.Button(text="Enter", fg="#000", command=lambda:enter(wait_var), name="printbutton")
 			printbutton.grid(columnspan=1, column=2, row=4)
 			printbutton.wait_variable(wait_var)
 
 	def write_gui(self, location, memory):
 		'''Write a word from a specific location in memory to screen.'''
 		output = re.sub(r'^1', "-", memory.get(location))
-		tk.Label(fg="green", text=f"Contents of {int(location)} is {int(output)}").grid(columnspan=1, column=2, row=5)
+		tk.Label(fg="green", text=f"Contents of {int(location)} is {int(output)}", name="contents").grid(columnspan=1, column=2, row=5)
