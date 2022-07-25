@@ -3,6 +3,8 @@ Author: Nick Moss
 '''
 import registers
 
+import memory
+
 class Math_Ops:
 	def num_format(self, num):
 		while len(num) < 4:
@@ -29,40 +31,40 @@ class Math_Ops:
 			return int(string_value[1:])
 
 	def add(self, location, memory):
-		val1 = self.convert(registers.registers['ACC'])
+		val1 = self.convert(registers.reg_get("ACC"))
 		val2 = self.convert(memory.get(location))
 		result = val1 + val2
 		if result > 9999999 or result < -9999999:
 			return False
 
-		registers.registers['ACC'] = self.final_result(result)
+		registers.reg_store("ACC",self.final_result(result))
 
 		return True
 
 	def subtract(self, location, memory):
-		val1 = self.convert(registers.registers['ACC'])
+		val1 = self.convert(registers.reg_get("ACC"))
 		val2 = self.convert(memory.get(location))
 		result = val1 - val2
 		if result > 9999999 or result < -9999999:
 			return False
 
-		registers.registers['ACC'] = self.final_result(result)
+		registers.reg_store("ACC",self.final_result(result))
 
 		return True
 
 	def multiply(self, location, memory):
-		val1 = self.convert(registers.registers['ACC'])
+		val1 = self.convert(registers.reg_get("ACC"))
 		val2 = self.convert(memory.get(location))
 		result = val1 * val2
 		if result > 9999999 or result < -9999999:
 			return False
 
-		registers.registers['ACC'] = self.final_result(result)
+		registers.reg_store("ACC",self.final_result(result))
 
 		return True
 
 	def divide(self, location, memory):
-		val1 = self.convert(registers.registers['ACC'])
+		val1 = self.convert(registers.reg_get("ACC"))
 		val2 = self.convert(memory.get(location))
 		if val2 == 0:
 			return False
@@ -70,6 +72,10 @@ class Math_Ops:
 		if result > 9999999 or result < -9999999:
 			return False
 
-		registers.registers['ACC'] = self.final_result(result)
+		registers.reg_store("ACC",self.final_result(result))
 
 		return True
+
+
+
+
