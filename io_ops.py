@@ -33,7 +33,6 @@ class IO:
     def write(self, location, memory):
         '''Write a word from a specific location in memory to screen.'''
 
-        output = re.sub(r'^1', "-", memory.memory_dict[location])
         output = re.sub(r'^1', "-", memory.get(location))
         print(f"Contents of {int(location)} is {int(output)}")
 
@@ -50,8 +49,7 @@ class IO:
             else:
                 error_message.config(fg="#F0F0F0")
 
-            user_input = user_input.replace("+", "0").replace("-", "1")
-            memory.memory_dict[location] = (user_input).zfill(5)
+            memory.store(location, user_input.zfill(5))
         tk.Label(fg="#000", text="Enter an integer:").pack()
         inputtxt = tk.Text(height = 1, width = 5, fg="#fff")
         inputtxt.pack()
@@ -62,5 +60,5 @@ class IO:
 
     def write_gui(self, location, memory):
         '''Write a word from a specific location in memory to screen.'''
-        output = re.sub(r'^1', "-", memory.memory_dict[location])
+        output = re.sub(r'^1', "-", memory.get(location))
         tk.Label(fg="#000", text=f"Contents of {int(location)} is {int(output)}").pack()
