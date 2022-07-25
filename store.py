@@ -3,7 +3,7 @@
 import registers
 
 def store(location, memory):
-    word = registers.registers["ACC"]
+    word = registers.reg_get("ACC")
     memory.store(location, word)
 
     
