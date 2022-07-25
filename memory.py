@@ -11,6 +11,9 @@ class Memory:
  
     def store(self,location, input):
         '''Author: Kyle Meiners'''
+        if input[0] == "1":
+            input = input[1:]
+            input = "-" + input
         dec = int(input)
         if dec > 0:
             b32 = base32.dec_to_b32(dec)
@@ -32,7 +35,7 @@ class Memory:
             return dec
         else:
             dec = base32.b32_to_dec(b32)
-            return str(dec).zfill(5)
+            return "0" + str(dec)
 
     def reset(self):
         self.memory_dict = {str(x).zfill(2): "00000" for x in range(0,100)}
@@ -110,6 +113,7 @@ class Memory:
                 break
 
             # Parse user input for memory ( + => 0 and - => 1 )
+            user_input = user_input.replace("+","0").replace("-","1")
             self.store(location, user_input)
 
     def load_gui(self, program):
@@ -128,3 +132,4 @@ class Memory:
                 self.memory_dict[location] = instruction
         except StopIteration:
             pass
+        
