@@ -1,53 +1,45 @@
 import tkinter as tk
-import memory as mem
-import execute
+import gui_commands
 
 root = tk.Tk()
-m = mem.Memory()
 root.title("UVSim")
-root.geometry("500x500")
 
+# Canvas width and placement on screen
+frame = tk.Frame(root, width= 600, height= 500)
+frame.grid(columnspan=3, rowspan=11)
 
-def run():
-    m.reset()
-    clear_widget(memory_widget)
-    inp = inputtxt.get(1.0, "end-1c")
-    success = m.load_gui(inp)
-    if success is False:
-        error_message.config(fg="#A00")
-        memory_lbl.pack_forget()
-        memory_widget.pack_forget()
-        return
-    error_message.config(fg="#F0F0F0")
-    execute.execute(m)
+# Instructions text
+instructions = tk.Label(root, fg="#000", text="Import a txt file for UVSim to run", font="Raleway")
+instructions.grid(columnspan=3, column=0, row=0)
 
-    memory_lbl.pack()
-    memory_widget.config(state="disabled")
-    m.read_gui(memory_widget)
-
-def clear_widget(text_widget):
-    text_widget.config(state="normal")
-    text_widget.delete(1.0,tk.END)
-
-# Label for instructions
-tk.Label(root, fg="#009", text=
-        "Welcome to UVSim\n"
-        "Enter your program below. Enter each word / instruction on a newline."
-    ).pack()
-# Label and text box for user input
-tk.Label(root, fg= "#000", text="Console:").pack()
-inputtxt = tk.Text(root, height = 5, width = 20, fg="#FFF", bg="#000")
-inputtxt.pack()
+# File browse text
+browse_text = tk.StringVar()
+browse_btn = tk.Button(root, textvariable=browse_text, fg="#000", font="Raleway")
+browse_btn.config(command=lambda:gui_commands.open_file(printbutton, complete_label, complete_string, resetbutton))
+browse_text.set("Choose a File")
+browse_btn.grid(columnspan=3, column=0, row=1)
 
 # Button to load and execute program
-printbutton = tk.Button(root, text="Execute Program", fg="#000", command=run)
-printbutton.pack()
+printbutton = tk.Button(root, fg="black", text="Execute Program", state="disabled")
+printbutton.config(command=lambda:gui_commands.run(memory_lbl, memory_widget, complete_label, printbutton, resetbutton, browse_btn))
 
-error_message = tk.Label(root, text="Invalid Entry. Re-enter program.", fg="#F0F0F0")
-error_message.pack()
+# Reset Button
+resetbutton = tk.Button(root, fg="black", text="Reset Program", state="active")
+resetbutton.config(command=lambda:gui_commands.reset(root, browse_btn, resetbutton, memory_widget, memory_lbl))
 
+# Memnory Label
 memory_lbl = tk.Label(root, fg="#000", text="Memory:")
+
+# Program loaded label
+complete_string = tk.StringVar()
+complete_label = tk.Label(root, textvariable=complete_string)
+
 # Widget for the program memory
-memory_widget = tk.Text(root, height = 5, width = 20, bg="#000", fg="#FFF")
+memory_widget = tk.Text(root, height = 20, width = 100, bg="#000", fg="#FFF")
+memory_widget.grid(columnspan=3, column=0, row=10)
+
+# Integer input error message
+integer_string = tk.StringVar()
+integer_error_message = tk.Label(root)
 
 root.mainloop()
