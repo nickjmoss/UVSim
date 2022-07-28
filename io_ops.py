@@ -21,9 +21,8 @@ class IO:
 		
 		memory.store(location, (user_input).zfill(5))
 		if user_input.startswith("-"):
-			user_input = user_input.replace("-","")
 			user_input = (user_input).zfill(5)
-			user_input = str(int(user_input) * -1)
+			user_input = user_input.replace("-","1")
 		else:
 			user_input = user_input.replace("+", "0")
 		memory.store(location, (user_input).zfill(5))
@@ -48,7 +47,11 @@ class IO:
 			if re.fullmatch("^[+-]?\d{1,4}", user_input) is None:
 				loop_bool = True
 			else:
-				user_input = user_input.replace("+", "0").replace("-", "1")
+				if user_input.startswith("-"):
+					user_input = (user_input).zfill(5)
+					user_input = user_input.replace("-","1")
+				else:
+					user_input = user_input.replace("+", "0")
 				memory.store(location, user_input)
 				loop_bool = False
 		

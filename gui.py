@@ -9,7 +9,7 @@ frame = tk.Frame(root, width= 600, height= 500)
 frame.grid(columnspan=3, rowspan=11)
 
 # Instructions text
-instructions = tk.Label(root, text="Import a txt file for UVSim to run", font="Raleway")
+instructions = tk.Label(root, fg="#000", text="Import a txt file for UVSim to run", font="Raleway")
 instructions.grid(columnspan=3, column=0, row=0)
 
 # File browse text
@@ -20,11 +20,11 @@ browse_text.set("Choose a File")
 browse_btn.grid(columnspan=3, column=0, row=1)
 
 # Button to load and execute program
-printbutton = tk.Button(root, text="Execute Program", fg="#000", state="disabled")
+printbutton = tk.Button(root, fg="black", text="Execute Program", state="disabled")
 printbutton.config(command=lambda:gui_commands.run(memory_lbl, memory_widget, complete_label, printbutton, resetbutton, browse_btn))
 
 # Reset Button
-resetbutton = tk.Button(root, text="Reset Program", fg="#000", state="active")
+resetbutton = tk.Button(root, fg="black", text="Reset Program", state="active")
 resetbutton.config(command=lambda:gui_commands.reset(root, browse_btn, resetbutton, memory_widget, memory_lbl))
 
 # Memnory Label
