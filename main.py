@@ -92,7 +92,7 @@ def main():
 
 			if op_code == "041":
 				'''Author: Gavin Doel'''
-				if int(registers.registers["ACC"]) < 0:
+				if int(registers.reg_get("ACC")) < 0:
 					br.branch(location)
 					iter_count = int(location)
 					continue
@@ -100,7 +100,7 @@ def main():
 
 			if op_code == "042":
 				'''Author: Gavin Doel'''
-				if int(registers.registers["ACC"]) == 0:
+				if int(registers.reg_get("ACC")) == 0:
 					br.branch(location)
 					iter_count = int(location)
 					continue

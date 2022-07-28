@@ -31,7 +31,7 @@ class IO:
 	def write(self, location, memory):
 		'''Write a word from a specific location in memory to screen.'''
 
-		output = re.sub(r'^1', "-", memory.memory_dict[location])
+
 		output = re.sub(r'^1', "-", memory.get(location))
 		print(f"Contents of {int(location)} is {int(output)}")
 
@@ -43,6 +43,7 @@ class IO:
 
 			wait.set(1)
 			user_input = inputtxt.get(1.0, "end-1c")
+
 
 			if re.fullmatch("^[+-]?\d{1,4}", user_input) is None:
 				loop_bool = True
@@ -65,6 +66,7 @@ class IO:
 			printbutton = tk.Button(text="Enter", fg="#000", command=lambda:enter(wait_var), name="printbutton")
 			printbutton.grid(columnspan=1, column=2, row=4)
 			printbutton.wait_variable(wait_var)
+
 
 	def write_gui(self, location, memory):
 		'''Write a word from a specific location in memory to screen.'''
