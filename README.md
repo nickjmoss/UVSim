@@ -26,6 +26,16 @@ All information is handled in terms of words. A word is a signed 4 digit number,
 All BasicML operations are +. The last two digits of the of the BasicML instruction are the operand which represent the address of the memory location containing the word to which the operation applies.
 Example: +1007 would be the READ Opcode which would read a word from the keyboard and store it in memory location 07.
 
+## Setup
+Install the following:
+
+`pip3 install tk`
+
+`pip3 install matplotlib`
+
+`pip3 install convertbase`
+
+
 ## How to run this program through the GUI
 1. Run UVSim by running `python3 gui.py`
 2. Once the GUI prompt appears, begin entering the BasicML program. This text field can be typed in, and can use cut/paste, delete/insert functions. Each entry should consists of a signed 4 digit number. 
